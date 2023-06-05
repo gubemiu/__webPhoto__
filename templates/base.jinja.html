@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='base.css')}}" />
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+</head>
+
+<!-- 註解 -->
+<style>
+    /* 新增的 CSS 样式 */
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+
+    }
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 20px;  
+        margin: 0;   
+        list-style: none;
+        background-color: #e4e1e1;
+    }
+nav li {
+        margin: 0 15px; /*字間格*/
+        height: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+    nav li a {
+        text-align: left;
+        font-family:Verdana, Geneva, sans-serif;
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 50%;
+        background-color: #f2f2f2;
+        color: #333;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    nav li a:hover {
+        background-color: #f3e59473;
+        box-shadow: 2px 2px 5px #333;
+    }
+    #footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #e4e1e1;
+        padding: 10px;
+        text-align: center;
+        font-family:Verdana, Geneva, sans-serif;
+        font-size: 14px;
+        
+    }
+    #footer a {
+        /* text-decoration: none; 移除底線 */
+        color:#ffffff ; 
+        background-color:#323042bd ;
+
+        font-size: 14px;
+        padding: 3px 6px; /* 調整超連結內容的內邊距 */
+        border-radius: 4px; /* 調整邊框的圓角半徑 */
+    }
+    #footer a:hover {
+        color:#000000; 
+        background-color: #f3e59473;
+        box-shadow: 2px 2px 5px #333;
+        font-size: 16px;
+        padding: 3px 6px; /* 調整超連結內容的內邊距 */
+        border-radius: 4px; /* 調整邊框的圓角半徑 */
+    }
+</style>
+
+<!-- 註解 -->
+
+
+
+<body>
+    <nav>
+        <ul>
+            <!-- url_for("index")=>index是app.py的function名稱 -->
+            <li><a href='{{url_for("index1")}}'>圖表1</a></li> 
+            <li><a href='{{url_for("index2")}}'>圖表2</a></li>
+            <li><a href='{{url_for("index3")}}'>圖表3</a></li>
+            <li><a href='{{url_for("index4")}}'>圖表4</a></li>
+        </ul>
+    </nav>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2023 by <a href="https://github.com/gubemiu">gubemiu</a>
+        <span style="margin-right: 20px;"></span>
+        來源：<a href="https://plotly.com/graphing-libraries/">Plotly | Graphing Libraries</a>
+        {% endblock %}
+    </div>
+</body>
+
+</html>

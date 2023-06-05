@@ -1,0 +1,27 @@
+{% extends "base.jinja.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+
+    <!-- 註解 -->
+    <style type="text/css">
+        h1 {
+                    font-family: Arial, sans-serif; 
+                    margin-top: 80px; /* 標及向下移動80px */ 
+            }        
+    </style>
+    <!-- 註解 -->
+
+{% endblock %}
+{% block content %}
+    <h1 style="margin-left: 25px;">圖表4 - Mapbox Choropleth Maps</h1>
+    <div id="chart" class="chart" style="max-width: 1200;overflow: auto;">
+
+    </div>
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        var graphs = {{ graphJSON | safe}};
+        Plotly.newPlot('chart', graphs, {});     
+    </script>
+
+{% endblock %}
